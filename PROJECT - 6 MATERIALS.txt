@@ -1,3 +1,7 @@
+---------------------------------------------------------------- KUBERNETES YAML FILE ---------------------------------------------
+
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,7 +18,7 @@ spec:
     spec:
       containers:
       - name: mlops-app
-        image: us-central1-docker.pkg.dev/flowing-tooling-349805/mlops-app/mlops-app:latest     
+        image: us-central1-docker.pkg.dev/mlops-new-447207/mlops-app/mlops-app:latest
         ports:
         - containerPort: 5000
 
@@ -32,3 +36,11 @@ spec:
       port: 80
       targetPort: 5000
   type: LoadBalancer
+
+
+
+---------------------------------------------------------------------   CONVERT TO BASE64 -----------------------------------
+
+cat gcp-key.json | base64 -w 0
+
+Make sure It is used in a Bash terminal
