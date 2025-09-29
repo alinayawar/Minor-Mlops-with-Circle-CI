@@ -4,6 +4,7 @@ executors:
   docker-executor:
     docker:
       - image: google/cloud-sdk:latest
+    machine: true
     working_directory: ~/repo
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
       - run:
           name: Build and Push Image
           command: |
-              docker build -t us-central1-docker.pkg.dev/flowing-tooling-349805/mlops-app/mlops-app:latest .
+              docker build -t us-central1-docker.pkg.dev/$GOOGLE_PROJECT_ID/mlops-app/mlops-app:latest .
               docker push us-central1-docker.pkg.dev/$GOOGLE_PROJECT_ID/mlops-app/mlops-app:latest
 
   deploy_to_gke:
